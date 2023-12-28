@@ -1,0 +1,58 @@
+class Shape {
+    public:
+        virtual double getPerimeter() {
+            return 0;
+        }
+    private:
+};
+
+class Rectangle : public Shape{
+    public:
+        Rectangle(int a,int b){
+            this->a = a;
+            this->b = b;
+        }
+        
+        double getPerimeter(){
+            return (this->a + this->b)*2;
+        }
+    private:
+        int a;
+        int b;
+};
+
+class Circle  : public Shape{
+    public:
+        Circle(int r){
+            this-> r = r;
+        }
+        
+        double getPerimeter() {
+            return 2 * this->PI * this->r;
+        }
+    private:
+        int r;
+        const double PI = 3.141592653589793;
+};
+
+class Triangle : public Shape{
+    public:
+        Triangle(int a,int b,int c) {
+            this-> a = a;
+            this-> b = b;
+            this-> c = c;
+        }
+        
+        double getPerimeter(){
+            
+            if ((this->a >= this->b + this->c) or (this->b >= this->a + this->c) or (this->c >= this->a + this->b)) {
+                return 0;
+            }
+            return this->a + this->b + this-> c;
+        }
+        
+    private:
+        int a;
+        int b;
+        int c;
+};
